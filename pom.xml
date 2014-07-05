@@ -1,0 +1,40 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>puppetlabs.cprice</groupId>
+    <artifactId>jruby-puppet-compile-memleak</artifactId>
+    <version>0.0.1</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>1.7.13</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.0.0.Final</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-Xms128m</argument>
+                        <argument>-Xmx128m</argument>
+                        <argument>-XX:+TraceClassUnloading</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>puppetlabs.jruby.compile.MemLeak</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
