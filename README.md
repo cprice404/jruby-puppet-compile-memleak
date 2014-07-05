@@ -1,7 +1,9 @@
 jruby-puppet-compile-memleak
 ============================
 
-repro case for (native) memory leak when compiling puppet catalogs with jruby
+repro case for (native) memory leak when compiling puppet catalogs with jruby via a ScriptingContainer.
+
+The relevant code in this repo is in `src/main/java` and `src/main/ruby/jruby/lib`.  The ruby code in `src/main/ruby/facter` and `src/main/ruby/puppet` is simply an unmodified copy of the puppet/facter source, included in this repo only to simplify the repro case.  The puppet code in `dev/puppet` is just some sample input to Puppet.
 
 To repro, simply:
 
