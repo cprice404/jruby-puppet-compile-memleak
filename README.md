@@ -3,11 +3,13 @@ jruby-puppet-compile-memleak
 
 repro case for (native) memory leak when compiling puppet catalogs with jruby via a ScriptingContainer.
 
-The relevant code in this repo is in `src/main/java` and `src/main/ruby/jruby/lib`.  The ruby code in `src/main/ruby/facter` and `src/main/ruby/puppet` is simply an unmodified copy of the puppet/facter source, included in this repo only to simplify the repro case.  The puppet code in `dev/puppet` is just some sample input to Puppet.
+The relevant code in this repo is in `memleak/src/main/java` and `memleak/src/main/ruby/jruby/lib`.  The ruby code in `memleak/src/main/ruby/facter` and `memleak/src/main/ruby/puppet` is simply an unmodified copy of the puppet/facter source, included in this repo only to simplify the repro case.  The puppet code in `dev/puppet` is just some sample input to Puppet.
 
 To repro, simply:
 
-    mvn compile && mvn exec:exec
+    mvn compile
+    cd memleak
+    mvn exec:exec
 
 This will launch a process with a max heap size of 128m, which does the following:
 
