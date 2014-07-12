@@ -1,5 +1,12 @@
 #!/bin/bash
 
+DELAY=10
+if [ "$1" != "" ]
+then
+   DELAY=$1
+fi
+echo "Delay set to $DELAY"
+
 PROCESSNAME=memleak
 ORIGPID=`jps -m |grep -i memleak |awk '{print $1}'`
 START=`date +%s`
@@ -9,7 +16,7 @@ then
    echo "Program does not appear to be running yet."
 fi
 
-while sleep 5;
+while sleep $DELAY;
 do
    MYPID=`jps -m |grep -i memleak |awk '{print $1}'`
    if [ "$ORIGPID" != "$MYPID" ]
