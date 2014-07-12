@@ -24,7 +24,7 @@ public class MemLeak {
     }
 
     public static void main(String[] args) throws Throwable {
-        compileInLoop(300, TimeUnit.SECONDS);
+        compileInLoop(1, TimeUnit.DAYS);
         CountDownLatch latch = new CountDownLatch(1);
         System.out.println("Waiting for latch that will never be released.");
         latch.await();

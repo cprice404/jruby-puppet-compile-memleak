@@ -89,7 +89,8 @@ Facter.add(:macaddress) do
       if str =~ /([a-z]+\d+): flags=/
         devname = $1
         unless devname =~ /lo0/
-          output2 = %x{/usr/bin/entstat #{devname}}
+          # output2 = %x{/usr/bin/entstat #{devname}}
+          output2 = ""
           output2.each_line do |str2|
             if str2 =~ /^Hardware Address: (\w{1,2}:\w{1,2}:\w{1,2}:\w{1,2}:\w{1,2}:\w{1,2})/
               ether.push($1)

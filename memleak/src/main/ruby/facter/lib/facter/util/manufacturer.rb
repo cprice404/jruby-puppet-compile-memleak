@@ -8,19 +8,23 @@ module Facter::Manufacturer
     when 'Linux', 'GNU/kFreeBSD'
       return nil unless FileTest.exists?("/usr/sbin/dmidecode")
 
-      output=%x{/usr/sbin/dmidecode 2>/dev/null}
+      # output=%x{/usr/sbin/dmidecode 2>/dev/null}
+      output=""
     when 'FreeBSD'
       return nil unless FileTest.exists?("/usr/local/sbin/dmidecode")
 
-      output=%x{/usr/local/sbin/dmidecode 2>/dev/null}
+      # output=%x{/usr/local/sbin/dmidecode 2>/dev/null}
+      output=""
     when 'NetBSD', 'DragonFly'
       return nil unless FileTest.exists?("/usr/pkg/sbin/dmidecode")
 
-      output=%x{/usr/pkg/sbin/dmidecode 2>/dev/null}
+      # output=%x{/usr/pkg/sbin/dmidecode 2>/dev/null}
+      output=""
     when 'SunOS'
       return nil unless FileTest.exists?("/usr/sbin/smbios")
 
-      output=%x{/usr/sbin/smbios 2>/dev/null}
+      # output=%x{/usr/sbin/smbios 2>/dev/null}
+      output=""
     else
       output=nil
     end
