@@ -1,5 +1,3 @@
-require 'facter'
-
 require 'java'
 
 module Memleak
@@ -7,7 +5,7 @@ module Memleak
     include Java::puppetlabs.jruby.reproducer.RubyReproducer
 
     def iterate()
-      Facter::Util::Resolution.exec('hostname')
+      %x{hostname}
 
       ""
     end

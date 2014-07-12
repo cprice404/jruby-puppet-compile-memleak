@@ -27,8 +27,8 @@
                     <executable>java</executable>
                     <arguments>
 			            <!--<argument>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000</argument>-->
-                        <argument>-Xms128m</argument>
-                        <argument>-Xmx128m</argument>
+                        <argument>-Xms64m</argument>
+                        <argument>-Xmx64m</argument>
                         <argument>-XX:+TraceClassUnloading</argument>
                         <argument>-classpath</argument>
                         <classpath/>
