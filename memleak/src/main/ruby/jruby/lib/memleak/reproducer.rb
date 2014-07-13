@@ -7,7 +7,8 @@ module Memleak
     include Java::puppetlabs.jruby.reproducer.RubyReproducer
 
     def iterate()
-      Facter::Util::Resolution.exec('hostname')
+      Facter.clear
+      Facter.loadfacts
 
       ""
     end
