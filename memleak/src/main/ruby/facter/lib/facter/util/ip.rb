@@ -117,7 +117,8 @@ module Facter::Util::IP
     if File.exists?("/sys/class/net/#{interface}/address") then
       ib_mac_address = `cat /sys/class/net/#{interface}/address`.chomp
     elsif File.exists?("/sbin/ip") then
-      ip_output = %x{/sbin/ip link show #{interface}}
+      #ip_output = %x{/sbin/ip link show #{interface}}
+      ip_output = ""
       ib_mac_address = ip_output.scan(%r{infiniband\s+((\w{1,2}:){5,}\w{1,2})})
     else
       ib_mac_address = "FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF"
@@ -188,7 +189,8 @@ module Facter::Util::IP
       return nil
     end
     regex = /SLAVE[,>].* (bond[0-9]+)/
-      ethbond = regex.match(%x{/sbin/ip link show #{interface}})
+      # ethbond = regex.match(%x{/sbin/ip link show #{interface}})
+      ethbond = regex.match("")
     if ethbond
       device = ethbond[1]
     else

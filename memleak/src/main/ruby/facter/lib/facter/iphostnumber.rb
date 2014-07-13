@@ -12,7 +12,8 @@
 Facter.add(:iphostnumber) do
   confine :kernel => :darwin, :kernelrelease => "R6"
   setcode do
-    %x{/usr/sbin/scutil --get LocalHostName}
+    # %x{/usr/sbin/scutil --get LocalHostName
+    ""
   end
 end
 Facter.add(:iphostnumber) do
