@@ -1,6 +1,0 @@
---protected
---private
---verbose
---markup markdown
---readme README_DEVELOPER.md
-lib/**/*.rb
