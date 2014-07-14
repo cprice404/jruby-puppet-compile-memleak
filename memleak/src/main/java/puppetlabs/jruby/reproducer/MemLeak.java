@@ -8,7 +8,7 @@ public class MemLeak {
     private static void reproLoop(int duration, TimeUnit timeUnit) throws Throwable {
         long start = System.currentTimeMillis();
         System.out.println("Creating reproducer");
-        Reproducer reproducer = Reproducer.create();
+        JavaReproducer reproducer = JavaReproducer.create();
         int i = 0;
         do {
             i++;
