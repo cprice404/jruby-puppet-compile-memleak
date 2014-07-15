@@ -12,6 +12,13 @@ class CatalogCompiler
          "--vardir", "./dev/puppet/var",
          "--manifest", "./dev/puppet/conf/manifests/site.pp",
         "--verbose"])
+    Puppet.settings.preferred_run_mode = :master
+    master_run_mode = Puppet::Util::RunMode[:master]
+    app_defaults = Puppet::Settings.app_defaults_for_run_mode(master_run_mode).
+        merge({:name => "master",
+               :node_cache_terminus => :write_only_yaml,
+               :facts_terminus => 'yaml'})
+    Puppet.settings.initialize_app_defaults(app_defaults)
   end
 
   def compile()
